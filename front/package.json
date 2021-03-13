@@ -1,0 +1,24 @@
+{
+  "name": "obs-slack-banner-front",
+  "version": "0.0.1",
+  "description": "Frontend of the Obs Slack Banner",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayudante-virtual/obs-slack-banner.git"
+  },
+  "keywords": [
+    "obs",
+    "slack",
+    "banner"
+  ],
+  "author": "Seblaz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayudante-virtual/obs-slack-banner/issues"
+  },
+  "homepage": "https://github.com/ayudante-virtual/obs-slack-banner#readme"
+}

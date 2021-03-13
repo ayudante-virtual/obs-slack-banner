@@ -1,0 +1,33 @@
+{
+  "name": "obs-slack-banner-bot",
+  "version": "0.0.1",
+  "description": "Slack bot of the Obs Slack Banner",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "start:dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayudante-virtual/obs-slack-banner.git"
+  },
+  "keywords": [
+    "obs",
+    "slack",
+    "banner"
+  ],
+  "author": "Seblaz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayudante-virtual/obs-slack-banner/issues"
+  },
+  "homepage": "https://github.com/ayudante-virtual/obs-slack-banner#readme",
+  "dependencies": {
+    "@slack/bolt": "^3.3.0",
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
