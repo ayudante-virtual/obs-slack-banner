@@ -8,8 +8,8 @@ const app = new App({
 });
 
 
-const webapp = new WebApp()
 const logger = console
+const webapp = new WebApp(logger, `http://${process.env.WEBAPP_HOSTNAME}:${process.env.WEBAPP_PORT}`)
 new MessageForwarder(logger, app, webapp);
 
 (async () => {
