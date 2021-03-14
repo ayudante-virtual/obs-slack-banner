@@ -1,17 +1,17 @@
-name: webapp
+name: front
 on:
   pull_request:
-    paths:
-      - "webapp/**"
+#    paths:
+#      - "front/**"
   push:
-    paths:
-      - "webapp/**"
+#    paths:
+#      - "front/**"
 env:
-  SRC_PATH: webapp
+  SRC_PATH: front
   REGISTRY_URL: ghcr.io
   REGISTRY_USERNAME: ${{ github.actor }}
   REGISTRY_PASSWORD: ${{ secrets.CONTAINER_REGISTRY_TOKEN }}
-  IMAGE_NAME: ghcr.io/ayudante-virtual/obs-slack-banner-webapp
+  IMAGE_NAME: ghcr.io/ayudante-virtual/obs-slack-banner-front
   IMAGE_VERSION: ${{ github.sha }}
 jobs:
   package:
