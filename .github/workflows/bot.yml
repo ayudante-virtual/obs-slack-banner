@@ -1,0 +1,25 @@
+name: bot
+on:
+  pull_request:
+    paths:
+      - "bot/**"
+  push:
+    paths:
+      - "bot/**"
+env:
+  SRC_PATH: bot
+  REGISTRY_URL: ghcr.io
+  REGISTRY_USERNAME: ${{ github.actor }}
+  REGISTRY_PASSWORD: ${{ secrets.CONTAINER_REGISTRY_TOKEN }}
+  IMAGE_NAME: ${{ env.REGISTRY_URL }}/ayudante-virtual/obs-slack-banner-bot
+  IMAGE_VERSION: ${{ github.sha }}
+jobs:
+  package:
+    runs-on: ubuntu-20.04
+    needs: build
+    if: contains('refs/heads/main', github.ref)
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build image
+        run: .github/scripts/package.sh
