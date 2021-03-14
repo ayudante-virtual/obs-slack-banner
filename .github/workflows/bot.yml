@@ -20,5 +20,5 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Build image
-        run: .github/scripts/package.sh
+      - name: Build and publish image
+        run: .github/scripts/build_and_publish.sh
