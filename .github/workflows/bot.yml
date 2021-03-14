@@ -1,11 +1,11 @@
 name: bot
 on:
   pull_request:
-    paths:
-      - "bot/**"
+#    paths:
+#      - "bot/**"
   push:
-    paths:
-      - "bot/**"
+#    paths:
+#      - "bot/**"
 env:
   SRC_PATH: bot
   REGISTRY_URL: ghcr.io
