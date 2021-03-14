@@ -16,7 +16,6 @@ env:
 jobs:
   package:
     runs-on: ubuntu-20.04
-    needs: build
     if: contains('refs/heads/main', github.ref)
     steps:
       - name: Checkout code
