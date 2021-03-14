@@ -1,17 +1,17 @@
-name: bot
+name: webapp
 on:
   pull_request:
-    paths:
-      - "bot/**"
+#    paths:
+#      - "webapp/**"
   push:
-    paths:
-      - "bot/**"
+#    paths:
+#      - "webapp/**"
 env:
-  SRC_PATH: bot
+  SRC_PATH: webapp
   REGISTRY_URL: ghcr.io
   REGISTRY_USERNAME: ${{ github.actor }}
   REGISTRY_PASSWORD: ${{ secrets.CONTAINER_REGISTRY_TOKEN }}
-  IMAGE_NAME: ghcr.io/ayudante-virtual/obs-slack-banner-bot
+  IMAGE_NAME: ghcr.io/ayudante-virtual/obs-slack-banner-webapp
   IMAGE_VERSION: ${{ github.sha }}
 jobs:
   package:
