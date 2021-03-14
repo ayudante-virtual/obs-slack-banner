@@ -1,11 +1,11 @@
 name: front
 on:
   pull_request:
-#    paths:
-#      - "front/**"
+    paths:
+      - "front/**"
   push:
-#    paths:
-#      - "front/**"
+    paths:
+      - "front/**"
 env:
   SRC_PATH: front
   REGISTRY_URL: ghcr.io
