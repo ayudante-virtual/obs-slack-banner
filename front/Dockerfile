@@ -21,10 +21,19 @@ RUN npm run build
 # ----------------------------------
 # production
 # ----------------------------------
-FROM halverneus/static-file-server as production
+FROM nginx:1.19.8-alpine as production
+
+# Install jq to dump env later
+RUN apk update && apk add --no-cache jq
+
+# Copy replacement script
+COPY prod/replace_env_variables.sh /docker-entrypoint.d/
+
+# Copy prod config
+COPY prod/nginx.conf.template /etc/nginx/templates/default.conf.template
 
 # Set workdir
-WORKDIR /web
+WORKDIR /www/data
 
 # Get CWD
 ARG CWD=/app

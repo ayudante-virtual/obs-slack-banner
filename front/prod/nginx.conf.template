@@ -1,0 +1,7 @@
+server {
+    listen ${FRONT_PORT};
+
+    location / {
+        root /www/data;
+    }
+}

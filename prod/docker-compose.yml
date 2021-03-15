@@ -3,7 +3,7 @@ services:
   proxy:
     image: nginx:1.19.8-alpine
     volumes:
-     - ./nginx.conf.template:/etc/nginx/templates/nginx.conf.template
+     - ./nginx.conf.template:/etc/nginx/templates/default.conf.template
     ports:
      - "80:80"
     env_file:
@@ -11,17 +11,26 @@ services:
     networks:
       proxied-net:
       obs-slack-banner:
+    depends_on:
+      - front
+      - webapp
+      - bot
 
   front:
     image: ghcr.io/ayudante-virtual/obs-slack-banner-front:latest
+    hostname: "${FRONT_HOSTNAME}"
     depends_on:
       - webapp
+    env_file:
+      - .env
+    environment:
+      PORT: ${FRONT_PORT}
     networks:
       obs-slack-banner:
 
   bot:
     image: ghcr.io/ayudante-virtual/obs-slack-banner-bot:latest
-    hostname: "${BOT_HOSTNAME:-webapp}"
+    hostname: "${BOT_HOSTNAME}"
     env_file:
       - .env
     depends_on:
@@ -31,7 +40,7 @@ services:
 
   webapp:
     image: ghcr.io/ayudante-virtual/obs-slack-banner-webapp:latest
-    hostname: "${WEBAPP_HOSTNAME:-webapp}"
+    hostname: "${WEBAPP_HOSTNAME}"
     env_file:
       - .env
     depends_on:
@@ -41,7 +50,7 @@ services:
 
   redis:
     image: redis:6.2.1-alpine3.13
-    hostname: "${REDIS_HOSTNAME:-redis}"
+    hostname: "${REDIS_HOSTNAME}"
     networks:
       obs-slack-banner:
 

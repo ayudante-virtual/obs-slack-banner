@@ -5,18 +5,18 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import axios from 'axios';
+import env from './env';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
-        // maxWidth: 360,
         backgroundColor: theme.palette.background.paper,
     },
 }));
 
 const App = () => {
     const classes = useStyles();
-    const baseUrl = `http://${process.env.REACT_APP_WEBAPP_HOSTNAME}:${process.env.REACT_APP_WEBAPP_PORT}/messages`
+    const baseUrl = `${env('REACT_APP_WEBAPP_URL')}/messages`
     const [messages, setMessages] = useState([])
 
     useEffect(() => {
