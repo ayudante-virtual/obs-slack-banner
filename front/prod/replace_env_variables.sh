@@ -1,4 +1,5 @@
 #!/bin/sh
 
 ENV=$(jq -cn env)
-sed -i'' 's~"__ENV__"~'\'"$ENV"\''~g' index.html
+ESCAPED_ENV=$(printf '%s\n' "$ENV" | sed -e 's/[\/&]/\\\\\\&/g')
+sed -i'' 's~"__ENV__"~'\'"$ESCAPED_ENV"\''~g' index.html
