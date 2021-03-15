@@ -42,3 +42,4 @@ const port = process.env.WEBAPP_PORT || 3000
 app.listen(port, () => {
     logger.info(`Webapp listening at port ${port}`)
 })
+
