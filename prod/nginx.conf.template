@@ -6,7 +6,7 @@ server {
     }
 
     location /slack/events {
-        proxy_pass http://${BOT_HOSTNAME}:${BOT_PORT}/;
+        proxy_pass http://${BOT_HOSTNAME}:${BOT_PORT}/slack/events;
     }
 
     location / {

@@ -4,8 +4,6 @@ services:
     image: nginx:1.19.8-alpine
     volumes:
      - ./nginx.conf.template:/etc/nginx/templates/default.conf.template
-    ports:
-     - "80:80"
     env_file:
       - .env
     networks:
