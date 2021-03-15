@@ -51,6 +51,9 @@ COPY src src
 # ----------------------------------
 FROM base as production
 
+# Get CWD
+ARG CWD=/app
+
 # Copy the previously installed dependencies
 COPY --from=production_dependencies "$CWD" .
 
