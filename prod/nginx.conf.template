@@ -1,0 +1,15 @@
+server {
+    listen 80;
+
+    location /api/ {
+        proxy_pass http://${WEBAPP_HOSTNAME}:${WEBAPP_PORT};
+    }
+
+    location /slack/events {
+        proxy_pass http://${BOT_HOSTNAME}:${BOT_PORT};
+    }
+
+    location / {
+        proxy_pass http://${FRONT_HOSTNAME}:${FRONT_PORT};
+    }
+}
