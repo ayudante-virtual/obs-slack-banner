@@ -3,9 +3,11 @@ services:
   proxy:
     image: nginx:1.19.8-alpine
     volumes:
-     - ./nginx.conf.template:/etc/nginx/templates/
+     - ./nginx.conf.template:/etc/nginx/templates/nginx.conf.template
     ports:
      - "80:80"
+    env_file:
+      - .env
     networks:
       proxied-net:
       obs-slack-banner:
