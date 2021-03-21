@@ -1,5 +1,5 @@
 server {
-    listen 80;
+    listen ${PROXY_PORT};
 
     location /api/ {
         proxy_pass http://${WEBAPP_HOSTNAME}:${WEBAPP_PORT}/;
