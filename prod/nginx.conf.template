@@ -5,8 +5,8 @@ server {
         proxy_pass http://${WEBAPP_HOSTNAME}:${WEBAPP_PORT}/;
     }
 
-    location /slack/events {
-        proxy_pass http://${BOT_HOSTNAME}:${BOT_PORT}/slack/events;
+    location /slack/ {
+        proxy_pass http://${BOT_HOSTNAME}:${BOT_PORT}/slack/;
     }
 
     location / {
