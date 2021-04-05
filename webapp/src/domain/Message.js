@@ -6,6 +6,6 @@ module.exports = class Message {
     }
 
     static async lastests(repo) {
-        return await repo.get({limit: 5})
+        return await repo.get({limit: 20})
     }
 }
