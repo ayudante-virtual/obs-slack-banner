@@ -15,7 +15,6 @@ RUN addgroup \
     --gid "$GID" \
     --system \
     "$USER" && \
-
     adduser \
     --disabled-password \
     --gecos "" \
@@ -24,7 +23,6 @@ RUN addgroup \
     --no-create-home \
     --uid "$UID" \
     "$USER" && \
-
     chown "$USER" .
 
 # Set non-root user
