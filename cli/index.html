@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Última consulta</title>
+    <style>
+        body {
+            font-size: 46px;
+        }
+
+        #wrapper {
+            height: 250px;
+            width: 1590px;
+            display: flex;
+            align-items: center;
+        }
+
+        #root {
+            font-family: "Open Sans", serif;
+        }
+
+        #root {
+            position: relative;
+            display: inline-block;
+            width: 1590px;
+            height: 250px;
+        }
+
+        #image {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        #text {
+            position: absolute;
+            top: 50%;
+            left: 8%;
+            right: 0;
+            transform: translate(0, -50%);
+            width: 89%;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="root">
+        <img id="image" src="banner-consulta.svg" alt="banner">
+        <div id="text">
+        </div>
+    </div>
+</div>
+<script>
+    function setText(text) {
+        function truncate(length, string) {
+            if (string.length > length + 3)
+                return string.substring(Math.min(length, string.length), 0) + '...'
+            return string
+        }
+
+        let height
+        let fontSize
+
+        if (Math.ceil(text.length / 64) === 1) {
+            height = 100
+            fontSize = 46
+        } else if (Math.ceil(text.length / 64) === 2) {
+            height = 200
+            fontSize = 46
+        } else if (Math.ceil(text.length / 84) === 2) {
+            height = 240
+            fontSize = 40
+        } else {
+            text = truncate(210, text)
+            height = 250
+            fontSize = 40
+        }
+
+        document.getElementById('root').style.height = height + 'px'
+        document.getElementById('text').textContent = text
+        document.getElementById('text').style.fontSize = fontSize + 'px'
+    }
+    window.setInterval(function (){
+        fetch('https://obs-slack-banner.ayudantes.ninja/api/messages/latest')
+            .then(response => response.json())
+            .then(data => setText(data.text));
+    }, 1000)
+</script>
+</body>
+</html>
