@@ -2,6 +2,10 @@ server {
     listen ${PROXY_PORT};
 
     location /api/ {
+        if ($uri = /api/messages/latest) {
+            add_header Access-Control-Allow-Origin *;
+        }
+
         proxy_pass http://${WEBAPP_HOSTNAME}:${WEBAPP_PORT}/;
     }
 
