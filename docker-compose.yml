@@ -16,7 +16,7 @@ services:
 
   bot:
     image: node:14.16.0-alpine3.13
-    hostname: "${BOT_HOSTNAME:-webapp}"
+    hostname: "${BOT_HOSTNAME:-bot}"
     ports:
       - "${BOT_PORT:-4000}:${BOT_PORT:-4000}"
     working_dir: /app
@@ -49,9 +49,31 @@ services:
     image: redis:6.2.1-alpine3.13
     hostname: "${REDIS_HOSTNAME:-redis}"
 
+  postgres:
+    image: postgres:13-alpine
+    hostname: "${POSTGRES_HOSTNAME:-postgres}"
+    env_file:
+      - .env
+    volumes:
+      - obs-slack-banner-postgres:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - "8080:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=user@user.com
+      - PGADMIN_DEFAULT_PASSWORD=postgres
+    volumes:
+      - obs-slack-banner-pgAdmin:/var/lib/pgadmin
+
   ngrok:
     image: wernight/ngrok:latest
     environment:
       NGROK_LOOK_DOMAIN: "${BOT_HOSTNAME:-bot}"
       NGROK_DEBUG: "true"
       NGROK_PORT: "${BOT_PORT:-4000}"
+
+volumes:
+  obs-slack-banner-postgres:
+  obs-slack-banner-pgAdmin:
