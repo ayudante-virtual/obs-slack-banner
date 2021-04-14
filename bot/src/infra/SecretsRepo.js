@@ -7,7 +7,7 @@ module.exports = class SecretsRepo {
     }
 
     async save(id, installation) {
-        this._logger.log(`Saving installation from ${id}.`)
+        this._logger.info(`Saving installation from ${id}.`)
         const previousInstallation = await this.get(id)
         if (previousInstallation) {
             await this._pg.query('UPDATE "slackTokens" SET installation = $2 WHERE id = $1', [
@@ -21,10 +21,10 @@ module.exports = class SecretsRepo {
     }
 
     async get(id) {
-        this._logger.log(`Retrieving installation from ${id}.`)
+        this._logger.info(`Retrieving installation from ${id}.`)
         const result = await this._pg.query('SELECT (installation) FROM "slackTokens" WHERE id = $1', [
             id
         ])
-        return result.rows[0].installation
+        return result?.rows[0]?.installation
     }
 }
