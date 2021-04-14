@@ -44,6 +44,7 @@ FROM base as production_files
 
 COPY src src
 COPY database.json database.json
+COPY migrations migrations
 
 # ----------------------------------
 # production
